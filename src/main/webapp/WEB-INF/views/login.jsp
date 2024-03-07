@@ -10,6 +10,8 @@
 <h1>login 페이지 입니다.</h1>
 
 <form action="/member/login"  method="POST">
+    <input type="email" name="email" placeholder="input email">
+    <button type="submit">login</button>
 
 </form>
 </body>

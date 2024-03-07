@@ -2,6 +2,7 @@ package com.practice.todolist.controller;
 
 import com.practice.todolist.dto.MemberDto;
 import com.practice.todolist.service.MemberService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +28,23 @@ public class MemberController {
         memberService.join(memberDto);
         return "redirect:/";
     }
-    @PostMapping("/member/login")
-    public String loginForm(){
 
+    @PostMapping("/member/login")
+    public String loginForm(HttpSession session, String email){
+        Integer checkId = memberService.findByEmail(email);
+
+        if(checkId != null){
+           session.setAttribute("memberId",checkId);
+            return "redirect:/";
+        }else {
+            return "login";
+        }
+
+    }
+
+    @GetMapping("/member/logout")
+    public String logout(HttpSession httpSession){
+        httpSession.invalidate();
         return "redirect:/";
     }
 }
