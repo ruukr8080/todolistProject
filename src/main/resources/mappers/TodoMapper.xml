@@ -3,7 +3,16 @@
 <mapper namespace="com.practice.todolist.mapper.TodoMapper">
 
 <insert id="add" parameterType="com.practice.todolist.dto.TodoDto" >
-    insert into todolist (title, detail,member_id,done,registerdt,updatedt) values (#{title}, #{detail},#{memberId},false,current_time,current_time);
+    insert into todolist (title, detail,member_id,done,registerdt,updatedt) values (#{title},
+                                                                                    #{detail},
+                                                                                    #{memberId},
+                                                                                    false,
+                                                                                    current_time,current_time);
  </insert>
+
+
+<select id="findAll" parameterType="int" resultType="com.practice.todolist.model.Todolist">
+        select * from todolist where member_id = #{id}
+</select>
 
 </mapper>

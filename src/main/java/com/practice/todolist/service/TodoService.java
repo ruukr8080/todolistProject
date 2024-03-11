@@ -14,4 +14,8 @@ public class TodoService{
     public void add(TodoDto todo) {
         mapper.add(todo);
     }
+
+    public List<Todolist> findAll(int id) {
+        return todolistMapper.findAll(id);
+    }
 }

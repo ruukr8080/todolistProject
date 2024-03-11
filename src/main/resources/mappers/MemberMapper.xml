@@ -6,11 +6,11 @@
     insert into MEMBER (name, email) values (#{name}, #{email});
  </insert>
 
-    <select id="findByEmail" parameterType="String">
+    <select id="findByEmail" parameterType="String" resultType="java.lang.Integer">
         select id from MEMBER where email = #{email};
     </select>
 
-    <select id="findById" parameterType="Integer">
+    <select id="findById" parameterType="Integer" resultType="com.practice.todolist.model.Member">
         select * from MEMBER where id = #{id};
     </select>
 
